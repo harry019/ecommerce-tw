@@ -1,27 +1,27 @@
 cartcnt = document.getElementById("cartcnt");
- let cartproduct =   JSON.parse(localStorage.getItem("cart")) || []
+let cartproduct = JSON.parse(localStorage.getItem("cart")) || []
 
 
-function displayCartData (){
-    if (cartproduct.length == 0) {
-        cartcnt.innerHTML = 
-        
-        `
+function displayCartData() {
+  if (cartproduct.length == 0) {
+    cartcnt.innerHTML =
+
+      `
         <h1>add product in cart</h1>
         `
-     }
-     else{
-        
-        input = ""
-        let uniqueId  = "priceqty"
-        let incBtn = "incbtn"
-        let decbtn = "decbtn"
-        cartproduct.map((val)=>{
-          uniqueId =   uniqueId+val.id;
-            incBtn = incBtn+val.id;
-            decbtn = decbtn+val.id;
-            input+=
-            `
+  }
+  else {
+
+    input = ""
+    let uniqueId = "priceqty"
+    let incBtn = "incbtn"
+    let decbtn = "decbtn"
+    cartproduct.map((val) => {
+      uniqueId = uniqueId + val.id;
+      incBtn = incBtn + val.id;
+      decbtn = decbtn + val.id;
+      input +=
+        `
             <tr>
     <td class="py-4">
         <div class="flex items-center">
@@ -43,40 +43,40 @@ function displayCartData (){
     <td class="py-4" onclick=deleteItem(${val.id})><i class="fa-solid fa-trash"></i></td>
     </tr> 
       `
-        })
-        let quantity = 1
-       cartcnt.innerHTML = input; 
-        // logic for qty  
-       let qty =  document.getElementById(uniqueId)
-       let totalPrice =  document.getElementById("totalPrice")
-      
-       function decrement(p){
-         if (quantity>0) {
-            quantity--;
-            qty.innerHTML = quantity;
-            totalPrice.innerHTML = Math.round(quantity * p)
-         }
-        
-       }
-       function increment(p){
-        quantity++;
-       qty.innerHTML =  quantity;
-       totalPrice.innerHTML = Math.round(quantity * p)
-       }
-    
-    
+    })
+    let quantity = 1
+    cartcnt.innerHTML = input;
+    // logic for qty  
+    let qty = document.getElementById(uniqueId)
+    let totalPrice = document.getElementById("totalPrice")
+
+    function decrement(p) {
+      if (quantity > 0) {
+        quantity--;
+        qty.innerHTML = quantity;
+        totalPrice.innerHTML = Math.round(quantity * p)
+      }
+
     }
-    
+    function increment(p) {
+      quantity++;
+      qty.innerHTML = quantity;
+      totalPrice.innerHTML = Math.round(quantity * p)
+    }
+
+
+  }
+
 }
 
 // logic for deleting product;
 displayCartData()
 
- function deleteItem(id){
- let cart =   JSON.parse(localStorage.getItem("cart"))
- let matchingProd = cart.find((val)=>{ return val.id == id})
-  let index  =  cart.indexOf(matchingProd);
-  cart.splice(index,1)
-   localStorage.setItem("cart",JSON.stringify(cart));
-   window.location.href = "cart.html"
- }
+function deleteItem(id) {
+  let cart = JSON.parse(localStorage.getItem("cart"))
+  let matchingProd = cart.find((val) => { return val.id == id })
+  let index = cart.indexOf(matchingProd);
+  cart.splice(index, 1)
+  localStorage.setItem("cart", JSON.stringify(cart));
+  window.location.href = "cart.html"
+}
