@@ -1,0 +1,33 @@
+#allproduct{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap:0px 20px;
+    justify-content: space-evenly;
+}
+.reviewCnt{
+    height:100px;
+    width: 60%;
+    /* background-color: pink; */
+    margin: auto;
+    border: 2px solid black;
+}
+.ratingcnt{
+    display: flex;
+    gap: 2rem;
+    /* background-color: red; */
+    padding: 0 50px;
+    
+}
+.likecnt{
+    display: flex;
+    justify-content: space-between; 
+    padding: 0 50px;
+    /* background-color: rgb(144, 0, 255); */
+}
+.likecnt p{
+    background-color: yellow;
+    border: 1px solid black;
+
+}
